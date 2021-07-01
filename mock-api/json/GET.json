@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "value": "Have a breakfast",
+        "deadline": "2021-07-02",
+        "isComplete": true
+    },
+    {
+        "id":2,
+        "value": "Fixing bug",
+        "deadline": "2021-07-04",
+        "isComplete": false
+    },
+    {
+        "id":3,
+        "value": "Code Review",
+        "deadline": "2021-07-05",
+        "isComplete": false
+    }
+]

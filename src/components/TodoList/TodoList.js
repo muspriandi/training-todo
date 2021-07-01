@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './TodoList.css'
+import { todoItem } from '../TodoInput/validation';
 
 class TodoList extends Component{
 
@@ -21,15 +22,22 @@ class TodoList extends Component{
         const {todoListItem, onDeleteTodo} = this.props;
         const {isComplete} = this.state;
         return(
-            <li className={isComplete ? 'complete' : ''} onClick={() => this.handleToogleTodo()}>
+            <li className={isComplete ? 'complete' : ''} onClick={() => this.handleToogleTodo()}
+                style={{width:'55%',marginLeft:'21%',listStyleType:'none',height:'4em'}}
+            >
             <Grid container>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                     <Checkbox isChecked={isComplete}/>
                 </Grid>
-                <Grid item xs={8}>
-                    <h3>{todoListItem.id}. {todoListItem.value}</h3>
+                <Grid container xs={10} style={{textAlign:'left'}}>
+                    <Grid item xs={10}>
+                        <h3 style={{margin:0,padding:0,height:'1.5em'}}>{todoListItem.id}. {todoListItem.value}</h3>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <span style={{fontSize:'0.9em'}}>{todoListItem.deadline}</span>
+                    </Grid>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                     <button onClick={() => onDeleteTodo(todoListItem.id)}>X</button>
                 </Grid>
             </Grid>

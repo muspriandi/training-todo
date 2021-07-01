@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {AppBar,Typography,Toolbar} from '@material-ui/core';
+import {AppBar,Typography,Toolbar,Container} from '@material-ui/core';
 import TodoList from './components/TodoList/TodoList';
 import TodoInput from './components/TodoInput/TodoInput';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component{
@@ -9,6 +10,17 @@ class App extends Component{
     super(props);
     this.state = {
       todoListItem: [],
+    }
+  }
+
+  componentDidMount(){
+    try{
+      axios.get("http://localhost:3001/getTodoList").then(
+        response => this.setState({todoListItem:response.data})
+      );
+    }catch(error){
+        console.log(error);
+        throw error;
     }
   }
 
@@ -40,6 +52,7 @@ class App extends Component{
               </Typography>
             </Toolbar>
           </AppBar>
+          <Container className={'bodycontent'}>
           <ul>
             {
               todoListItem.map(todo => 
@@ -48,6 +61,7 @@ class App extends Component{
             }
           </ul>
           <TodoInput handleSubmit={this.handleSubmit}/>
+          </Container>
         </div>
       );
     }
