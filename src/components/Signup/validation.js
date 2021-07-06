@@ -1,0 +1,21 @@
+import * as Yup from 'yup'
+
+export const userData = {
+    username: "",
+    email: "",
+    password: ""
+}
+
+export const validationSchema = function ( values) {
+    return Yup.object().shape({
+        username: Yup.string()
+        .min(5, "Username must be 5 characters at min")
+        .required("Username is required"),
+        email: Yup.string()
+        .required("Email is required"),
+        password: Yup.string()
+        .required("Password is required"),
+    })
+}
+
+export const defaultValue = Object.assign({}, userData);

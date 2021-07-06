@@ -1,0 +1,9 @@
+.bodycontent{
+    position: fixed;
+    top:30%;
+    width:200px;
+    height:90%;
+    text-align:center;
+    margin-top: -50px;
+    margin-left: -100px;
+  }
