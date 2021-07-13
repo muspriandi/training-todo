@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
-import SignupInput from '../../components/Signup/SignupInput';
+import SigninInput from '../../components/Signin/SigninInput';
 import UserService from '../../service/UserService';
 import {withRouter} from 'react-router-dom'
 
-class Signup extends Component{
+class Signin extends Component{
   constructor(props){
     super(props);
  
   }
 
   handleSubmit = entity =>{
-    UserService.signupUser(entity).then(resp => {
-        if(resp.status == 201){
+    UserService.signinUser(entity).then(resp => {
+        if(resp.status == 200){
 			console.log(resp)
-            this.props.history.push("/login")
+            this.props.history.push("/todo")
         }else{
             alert(resp)
         }
@@ -22,9 +22,9 @@ class Signup extends Component{
 
   render(){
     return (
-        <SignupInput handleSubmit={this.handleSubmit}/>
+        <SigninInput handleSubmit={this.handleSubmit}/>
       );
     }
 }
 
-export default withRouter(Signup);
+export default withRouter(Signin);

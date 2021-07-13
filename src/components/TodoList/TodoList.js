@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './TodoList.css'
-import { todoItem } from '../TodoInput/validation';
 
 class TodoList extends Component{
 

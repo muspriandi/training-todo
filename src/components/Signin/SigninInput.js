@@ -37,7 +37,7 @@ const styles = (theme) => ({
   },
 })
 
-class SignupInput extends Component{
+class SigninInput extends Component{
 
     render(){
         const {classes,handleSubmit} = this.props;
@@ -50,7 +50,7 @@ class SignupInput extends Component{
                 <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                Sign up
+                Sign In
                 </Typography>
                 <Formik
                 initialValues={defaultValue}
@@ -83,20 +83,6 @@ class SignupInput extends Component{
                             <Grid item xs={12}>
                                 <TextField
                                         fullWidth
-                                        id="email"
-                                        name="email"
-                                        label="Email"
-                                        type="email"
-                                        value={values.email}
-                                        InputLabelProps={{shrink:true}}
-                                        onChange={handleChange}
-                                        error={touched.email && Boolean(errors.email)}
-                                        helperText={touched.email && errors.email}
-                                    />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                        fullWidth
                                         id="password"
                                         name="password"
                                         label="Password"
@@ -110,12 +96,12 @@ class SignupInput extends Component{
                             </Grid>
                         </Grid>
                         <Button variant="contained" color="primary" className={classes.submit} fullWidth type="submit">
-                            {updating ? "Please wait..." : "Submit"}
+                            {updating ? "Please wait..." : "Login"}
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                            <Link href="/login" variant="body2">
-                                Already have an account? Sign in
+                            <Link href="/signup" variant="body2">
+                                Don't have an account? Sign Up
                             </Link>
                             </Grid>
                         </Grid>
@@ -127,4 +113,4 @@ class SignupInput extends Component{
     }
 }
 
-export default withStyles(styles)(SignupInput)
+export default withStyles(styles)(SigninInput)

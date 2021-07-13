@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {AppBar,Typography,Toolbar,Container} from '@material-ui/core';
 import TodoList from '../../components/TodoList/TodoList';
 import TodoInput from '../../components/TodoInput/TodoInput';
-import axios from 'axios';
 import './Todo.css';
 
 class Todo extends Component{

@@ -13,6 +13,16 @@ class UserService{
             throw err
         }
     }
+	
+    async signinUser(userData){
+        try{
+            const response = await axios.post("/api/auth/signin", userData, MS_CONFIG)
+            return response;
+        }catch(err){
+            alert(err)
+            throw err
+        }
+    }
 }
 
 export default new UserService();

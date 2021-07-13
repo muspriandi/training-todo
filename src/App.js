@@ -1,70 +1,29 @@
 import React, {Component} from 'react';
-import {AppBar,Typography,Toolbar,Container} from '@material-ui/core';
-import TodoList from './components/TodoList/TodoList';
-import TodoInput from './components/TodoInput/TodoInput';
-import axios from 'axios';
-import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+import Todo from './modules/Todo/Todo';
+import Signup from './modules/Signup/Signup';
+import Signin from './modules/Signin/Signin';
 
 class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      todoListItem: [],
-    }
-  }
-
-  componentDidMount(){
-    try{
-      axios.get("http://localhost:3001/getTodoList").then(
-        response => this.setState({todoListItem:response.data})
-      );
-    }catch(error){
-        console.log(error);
-        throw error;
-    }
-  }
-
-  handleSubmit = (entity) => {
-    const {todoListItem} = this.state;
-    const newTodo = {
-      id: todoListItem.length + 1,
-      value: entity.todoItemName,
-      deadline: entity.todoDeadline,
-      isComplete: false
-    }
-    this.setState({todoListItem: [...todoListItem, newTodo]})
-  }
-
-  handleRemoveTodoList = (todoId) => {
-    const {todoListItem} = this.state;
-    const newTodoList = todoListItem.filter(todoListItem => todoListItem.id !== todoId)
-    this.setState({todoListItem:newTodoList});
-  }
 
   render(){
-    const {todoListItem} = this.state
     return (
-        <div className="App">
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6" >
-                Todo
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Container className={'bodycontent'}>
-          <ul>
-            {
-              todoListItem.map(todo => 
-                <TodoList todoListItem={todo} onDeleteTodo={this.handleRemoveTodoList}/>
-              )
-            }
-          </ul>
-          <TodoInput handleSubmit={this.handleSubmit}/>
-          </Container>
-        </div>
-      );
-    }
+        <BrowserRouter>
+          <Switch>
+            <Route path="/todo">
+              <Todo />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path={["/", "/signin", "/login"]}>
+              <Signin />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+    );
+  }
 }
 
 export default App;
